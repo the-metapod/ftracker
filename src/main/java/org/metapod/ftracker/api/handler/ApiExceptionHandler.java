@@ -1,4 +1,4 @@
-package org.metapod.ftracker.api;
+package org.metapod.ftracker.api.handler;
 
 import org.metapod.ftracker.exception.DataIntegrityException;
 import org.metapod.ftracker.exception.ResourceMissingException;
@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class ApiExceptionHandler {
-    @ExceptionHandler({DataIntegrityException.class})
+
+    @ExceptionHandler(DataIntegrityException.class)
     public ResponseEntity<String> handleDataIntegrityException(DataIntegrityException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 
-    @ExceptionHandler({ResourceMissingException.class})
+    @ExceptionHandler(ResourceMissingException.class)
     public ResponseEntity<String> handleResourceMissingException(ResourceMissingException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }

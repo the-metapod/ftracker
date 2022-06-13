@@ -8,10 +8,7 @@ import org.metapod.ftracker.model.response.AirportTrafficSummaryResponse;
 import org.metapod.ftracker.model.response.FlightWeightResponse;
 import org.metapod.ftracker.service.InfoService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -21,13 +18,13 @@ import javax.validation.Valid;
 public class InfoController {
     private final InfoService infoService;
 
-    @GetMapping("/weight")
+    @PostMapping("/weight")
     public ResponseEntity<FlightWeightResponse>
     getFlightWeight(@RequestBody @Valid FlightWeightRequest request) throws ResourceMissingException {
         return ResponseEntity.ok(infoService.getFlightWeight(request));
     }
 
-    @GetMapping("/traffic")
+    @PostMapping("/traffic")
     public ResponseEntity<AirportTrafficSummaryResponse>
     getAirportTrafficSummary(@RequestBody @Valid AirportTrafficSummaryRequest request) {
         return ResponseEntity.ok(infoService.getAirportTrafficSummary(request));

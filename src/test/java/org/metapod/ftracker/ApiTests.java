@@ -74,7 +74,7 @@ public class ApiTests {
     @Test
     @Order(3)
     public void shouldReturnValidFlightWeightResponse() throws Exception {
-        var flightWeightRequest = get("/api/info/weight")
+        var flightWeightRequest = post("/api/info/weight")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(FLIGHT_WEIGHT_REQUEST);
 
@@ -90,7 +90,7 @@ public class ApiTests {
     @Test
     @Order(4)
     public void shouldReturnValidAirportTrafficSummaryResponse() throws Exception {
-        var flightWeightRequest = get("/api/info/traffic")
+        var flightWeightRequest = post("/api/info/traffic")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(AIRPORT_TRAFFIC_SUMMARY_REQUEST);
 
